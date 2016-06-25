@@ -73,3 +73,7 @@ And to install package via `yaourt` and skip the need to confirm the `do you wis
 # A: Of course I do that why I am running this command!
 yaourt google-chrome --noconfirm
 ```
+
+#### The best way to write changes log for the project
+
+Highly recommended take a look at [http://keepachangelog.com/](http://keepachangelog.com/).
