@@ -1,6 +1,6 @@
 ### Random Tips
 
-- Reset the very first commit in Git
+#### Reset the very first commit in Git
 
 Useful when you like to rewrite the very first command as `git reset HEAD~1` will not work.
 
@@ -14,7 +14,7 @@ git update-ref -d HEAD
 git push -f origin master
 ```
 
-- Work with two Github's profiles from the same machine (think Work/Personal)
+#### Work with two Github's profiles from the same machine (think Work/Personal)
 
 You will need to create the two SSH's keypairs one for work and one for personal use
 
@@ -55,3 +55,21 @@ git config user.email "me@my-work.com"
 ```
 
 Now you can push/pull using your usual git workflow.
+
+#### Arch Linux - working with `pacman` and `yaourt`
+
+List packages you have installed
+
+```sh
+sudo pacman -Qm
+yaourt -Qm
+```
+Very usefule when you like to know what you have already installed on two different computers.
+
+And to install package via `yaourt` and skip the need to confirm the `do you wish to continue?`
+
+```sh
+# Q: Do you wish to continue with installation?
+# A: Of course I do that why I am running this command!
+yaourt google-chrome --noconfirm
+```
