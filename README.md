@@ -14,6 +14,39 @@ git update-ref -d HEAD
 git push -f origin master
 ```
 
+#### Copy the ssh key to Github (Linux)
+
+
+- [Adding new ssh key to Github account](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/) for more detail
+- [How to generate ssh key for Github](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
+
+```sh
+$sudo apt-get install xclip # For Debian base system
+$sudo pacman -Sy xclip # For ArchLinux
+
+# Downloads and installs xclip. If you don't have `apt-get`, you might need to use another installer (like `yum`)
+
+$xclip -sel clip < ~/.ssh/id_rsa.pub
+# Copies the contents of the id_rsa.pub file to your clipboard
+```
+
+If you install the key manually you may like to
+
+```sh
+# Might need to install the sshpass/openssh
+sudo pacman -Sy openssh sshpass   # To get the ssh-agent
+chmod 0644 $HOME/.ssh/id_rsa      # your personal private key
+chmod 0644 $HOME/.ssh/id_rsa_work # your work private key (if any)
+
+eval "$(ssh-agent -s)"
+
+# Then perhap you should clear the `known_hosts` file if any
+>known_hosts # will clear out the file content
+
+# Then you can try to see if your ssh Github work
+ssh -T git@github.com
+```
+
 #### Work with two Github's profiles from the same machine (think Work/Personal)
 
 You will need to create the two SSH's keypairs one for work and one for personal use
