@@ -110,3 +110,34 @@ yaourt google-chrome --noconfirm
 #### The best way to write changes log for the project
 
 Highly recommended take a look at [http://keepachangelog.com/](http://keepachangelog.com/).
+
+#### Install ruby 2.2.3 on Arch when getting openssl error
+
+See [//wiki.archlinux.org/index.php/Rbenv](https://wiki.archlinux.org/index.php/Rbenv)
+
+```sh
+# First install required library if not already done
+pacman -S base-devel libffi libyaml openssl zlib
+
+# Install rbenv with patch
+curl -fsSL https://gist.github.com/mislav/055441129184a1512bb5.txt | rbenv install --patch 2.2.3
+```
+
+For other platform or system see [this link from rbenv](https://github.com/rbenv/ruby-build/issues/826) issues in Github
+
+#### Install and setup Postgres on ArchLinux
+
+The usual package installation
+
+```sh
+sudo pacman -Syu postgresql
+sudo pacman -Syu redis
+```
+
+Now folow [PostgreSQL wiki](https://wiki.archlinux.org/index.php/PostgreSQL/)
+
+In summary:
+
+```
+sudo -i -u postgres
+```
