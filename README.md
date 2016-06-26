@@ -125,7 +125,7 @@ curl -fsSL https://gist.github.com/mislav/055441129184a1512bb5.txt | rbenv insta
 
 For other platform or system see [this link from rbenv](https://github.com/rbenv/ruby-build/issues/826) issues in Github
 
-#### Install and setup Postgres on ArchLinux
+#### Install and setup Postgres (and redis) on ArchLinux
 
 The usual package installation
 
@@ -139,5 +139,34 @@ Now folow [PostgreSQL wiki](https://wiki.archlinux.org/index.php/PostgreSQL/)
 In summary:
 
 ```
+# login as postgres
 sudo -i -u postgres
+
+# Command now run as `postgres` user
+[postgres] initdb --locale $LANG -E UTF8 -D '/var/lib/postgres/data'
+
+# Exit from running as postgres
+exit
+
+# Now it is a good time to create a password for `postgres`
+# First change to root
+sudo su -
+
+# Change the password for user 'postgres'
+passwd postgres
+
+# Type and remember the password for postgres
+# Now exit from the sesssion
+exit
+
+# As sudo user, we will need to start the postgresql.service
+# Check the current status of the postgresql.service (it should be inactive)
+sudo systemctrl status postgresql.service
+
+# To start it with the system use
+sudo systemctrl enable postgresql.service
+
+# Similarly, for redis
+sudo systemctrl enable redis.service
 ```
+
