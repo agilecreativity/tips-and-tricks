@@ -170,3 +170,12 @@ sudo systemctrl enable postgresql.service
 sudo systemctrl enable redis.service
 ```
 
+#### Checkout the Github PR locally easily
+
+```
+[remote "origin"]
+	url = git@github-work:<YOUR-ORG-OR-USERID>/<YOUR-PROJECT>.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+  # This is the magic line, this will allow us to run `git checkout pr/<NUMBER>`
+  fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
+```
