@@ -179,3 +179,16 @@ sudo systemctrl enable redis.service
   # This is the magic line, this will allow us to run `git checkout pr/<NUMBER>`
   fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
 ```
+
+#### How to quickly clone multiple Github repos quickly
+
+Use my own [github-cloner](https://github.com/agilecreativity/github-cloner) gem
+
+```sh
+# Install the ruby gem
+gem install github-cloner
+
+# And just use it to clone the repos from your favourite user/organization
+# e.g. To clone all of the 'Emacs Lisp' and 'HTML' repository for user 'sachac' the Emacs curator try
+github cloner -u sachac -l "Emacs Lisp,HTML" -c
+```
