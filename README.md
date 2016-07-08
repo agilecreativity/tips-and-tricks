@@ -1,5 +1,16 @@
 ### Random Tips
 
+#### To properly deploy to [clojars.org](https://clojars.org)
+
+```
+# To avoid the error try with GPG keys
+lein deploy clojars
+
+# instead of just `lein deploy`
+```
+
+See [this link](https://github.com/technomancy/leiningen/issues/1890) for details
+
 #### Reset the very first commit in Git
 
 Useful when you like to rewrite the very first command as `git reset HEAD~1` will not work.
