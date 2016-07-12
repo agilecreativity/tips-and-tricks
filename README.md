@@ -1,5 +1,15 @@
 ### Random Tips
 
+#### Create new Github repository from command line
+
+Try using [gh-utils](https://github.com/agilecreativity/gh-utils)
+
+Once installed you can simply create a new empty Github repository with
+
+```sh
+gh-utils --config config.edn --r awesome-repo-name
+```
+
 #### To properly deploy to [clojars.org](https://clojars.org)
 
 ```
