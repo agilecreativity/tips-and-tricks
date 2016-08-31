@@ -155,7 +155,7 @@ sudo pacman -Syu postgresql
 sudo pacman -Syu redis
 ```
 
-Now folow [PostgreSQL wiki](https://wiki.archlinux.org/index.php/PostgreSQL/)
+Now follow [PostgreSQL wiki](https://wiki.archlinux.org/index.php/PostgreSQL/)
 
 In summary:
 
@@ -240,4 +240,5 @@ curl -fsSL https://gist.github.com/mislav/055441129184a1512bb5.txt | \
 
 - Download the older version of Firefox and install to some directory
 - [https://www.mozilla.org/en-US/firefox/35.0.1/releasenotes/]()
-
+- [download pages for version 35.0.1](https://ftp.mozilla.org/pub/firefox/releases/35.0.1/)
+- [The en-US version](https://ftp.mozilla.org/pub/firefox/releases/35.0.1/linux-x86_64/en-US/)
