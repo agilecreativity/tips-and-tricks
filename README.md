@@ -213,3 +213,31 @@ gem install github-cloner
 # e.g. To clone all of the 'Emacs Lisp' and 'HTML' repository for user 'sachac' the Emacs curator try
 github cloner -u sachac -l "Emacs Lisp,HTML" -c
 ```
+
+#### Install ruby version 2.2.3 on Linux e.g. ArchLinux with rbenv
+
+In this case, I am using `rbenv` as ruby manager. This wiil not be applicable
+to `rvm` or any other tools like `chruby`, etc.
+
+- [Original link](https://github.com/rbenv/ruby-build/wiki#openssl-sslv3_method-undeclared-error)
+
+```sh
+#!/bin/bash
+## See: the rbenv installation site
+## For Arch Linux we need to first install the following packages
+
+## 1)
+sudo pacman -S base-devel libffi libyaml openssl zlib
+
+## If you get the openssl error then try
+## https://github.com/rbenv/ruby-build/wiki#openssl-sslv3_method-undeclared-error
+## 2)
+curl -fsSL https://gist.github.com/mislav/055441129184a1512bb5.txt | \
+    rbenv install --patch 2.2.3
+```
+
+#### Selenium web driver for Firefox work best with version 35.0.1
+
+- Download the older version of Firefox and install to some directory
+- [https://www.mozilla.org/en-US/firefox/35.0.1/releasenotes/]()
+
