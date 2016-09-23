@@ -1,5 +1,29 @@
 ### Random Tips
 
+#### Copy public keys to the remote server (manual way)
+
+```
+cat ~/.ssh/id_rsa.pub | ssh user@123.45.67.89 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 0600 ~/.ssh/authorized_keys"
+```
+
+Optional: disable the password for root login
+
+```
+sudo vi /etc/ssh/sshd_config
+```
+
+Ensure that the following line are only allow the connection with SSH key:
+
+```
+PermitRootLogin without-password
+```
+
+Then reload the ssh daemon:
+
+```
+sudo reload ssh
+```
+
 #### Create new Github repository from command line
 
 Try using [gh-utils](https://github.com/agilecreativity/gh-utils)
