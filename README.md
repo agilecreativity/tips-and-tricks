@@ -1,5 +1,20 @@
 ### Random Tips
 
+#### Replace multiple blank lines with one in Emacs
+
+```elisp
+(defun single-blank-lines()
+  "replace multiple blank lines with a single one"
+  (interactive)
+  (goto-char (point-min))
+  (while (re-search-forward "\\(^\\s-*$\\)\n" nil t)
+    (replace-match "\n")
+    (forward-char 1)))
+```
+
+Then from inside Emacs just `M-x single-blank-lines`
+
+
 #### Copy public keys to the remote server (manual way)
 
 ```
