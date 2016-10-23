@@ -1,5 +1,11 @@
 ### Random Tips
 
+#### Running Arch Linux and VirtualBox
+
+See [this link from the Arch Wiki web site](https://wiki.archlinux.org/index.php/VirtualBox)
+
+e.g. You may just need to run `sudo modprobe vboxdrv` to start it up
+
 #### Replace multiple blank lines with one in Emacs
 
 ```elisp
@@ -13,7 +19,6 @@
 ```
 
 Then from inside Emacs just `M-x single-blank-lines`
-
 
 #### Copy public keys to the remote server (manual way)
 
@@ -75,7 +80,6 @@ git push -f origin master
 ```
 
 #### Copy the ssh key to Github (Linux)
-
 
 - [Adding new ssh key to Github account](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/) for more detail
 - [How to generate ssh key for Github](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
