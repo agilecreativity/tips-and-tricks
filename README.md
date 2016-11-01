@@ -1,5 +1,65 @@
 ### Random Tips
 
+#### Install postgreSQL on Fedora 24
+
+```
+sudo dnf install postgresql-server
+sudo postgresql-setup --initdb
+
+# start one time only
+sudo systemctrl start postgresql
+
+# start everytime we reboot
+sudo systemctrl enable postgresql
+```
+
+Change the password for user postgres
+
+```
+sudo su - postgres
+#$psql
+#postgres=#\password postgres
+# enter the password for user postgres
+```
+
+Create a user and a database
+
+```sh
+$createuser john -P
+$createdb --owner=john sample_db
+```
+
+If you already have the existing user you like to use just substitute accordingly
+
+```
+$createdb --owner=bchoomnuan sample_db
+```
+
+Edit the `/var/lib/pgsql/data/pg_hba.conf`
+
+```
+#TYPE DATABASE USER ADDRESS METHOD
+host  all  all 127.0.0.1/32 md5
+host  all  all ::1/128      md5
+local all  all postgres     peer
+```
+
+Or just keep it simple as we are running locally
+
+```
+#TYPE DATABASE USER ADDRESS METHOD
+host  all  all 127.0.0.1/32 trust
+host  all  all ::1/128      trust
+local all  all postgres     trust
+```
+
+Restart the service
+
+```
+$sudo systemctl enable postgresql.service
+# systemctl\Created symlink from /etc/systemd/system/multi-user.target.wants/postgresql.service to /usr/lib/systemd/system/postgresql.service.
+```
+
 #### Running Arch Linux and VirtualBox
 
 See [this link from the Arch Wiki web site](https://wiki.archlinux.org/index.php/VirtualBox)
