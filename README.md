@@ -1,4 +1,58 @@
 ### Random Tips
+#### Sample Jenkins script
+
+I am having fun with Jenkins script in Groovy recently.
+
+Here is the example of script that make a call to shell command to get the
+branch name from a given commit hash
+
+```groovy
+stage "preparation"
+
+node() {
+    stage('demo-stage') {
+        test_env("demo")
+        echo "FYI: may be you see: ${test_env_number}"
+        dir("filename_cleaner") {
+            // Note:t this cleanup the directory so that we can clone new repository successfully
+            deleteDir()
+
+            sh "git clone https://github.com/agilecreativity/filename_cleaner.git ."
+            sh "pwd"
+            sh "ls -alt"
+
+            // sample commit hash
+            def commit_hash = "fc975c412178fb1363df1644f70b158ddcd77b8a"
+
+            // Note: we always want to trim of the new line at the end
+            // find the branch name from a given commit hash
+            def result = exec_sh("git branch --contains $commit_hash | awk '{print \$2}'").trim()
+
+            echo "Your result: ${result}" // this print 'master'
+
+            // This is how you could use the result in your logic
+            if (result == "master") {
+                echo "Yes you are right master!!"
+            } else {
+                echo "I don't know you!"
+            }
+        }
+    }
+}
+
+def test_env(rals_env="build_admin") {
+    withEnv(["TEST_ENV_NUMBER=${test_env_number}"]) {
+        echo "Your path: ${env.PATH}"
+        echo "Your TEST_ENV_NUMBER= ${env.TEST_ENV_NUMBER}"
+    }
+}
+
+def exec_sh(script_name) {
+  def result = sh(returnStdout: true,
+                  script: script_name)
+  return result
+}
+```
 
 #### Install postgreSQL on Fedora 24
 
