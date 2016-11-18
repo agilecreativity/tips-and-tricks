@@ -1,4 +1,14 @@
 ### Random Tips
+
+#### Add sample test commit for testing with CI/CD build trigger jobs
+
+```sh
+#!/usr/bin/env bash
+## file: add-test-commit
+## Add test commit to any projects
+echo `date` >> test-commit.txt && git add --all && git commit -am "Test commit at `date`" && git push
+```
+
 #### Sample Jenkins script
 
 I am having fun with Jenkins script in Groovy recently.
