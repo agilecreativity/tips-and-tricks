@@ -1,5 +1,13 @@
 ### Random Tips
 
+#### Checkout the pull request commit from Github
+
+```sh
+git config --add remote.origin.fetch +refs/pull/*/head:refs/remotes/origin/pull/*
+git fetch origin
+#git describe --all  --contains <COMMIT>
+```
+
 #### To compare the content of two `.tar.gzip` file
 
 ```sh
