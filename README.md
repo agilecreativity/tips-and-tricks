@@ -1,5 +1,15 @@
 ### Random Tips
 
+#### To compare the content of two `.tar.gzip` file
+
+```sh
+#!/usr/bin/env bash
+file1=$1
+file2=$2
+# List the content of the file and find the differeces between them
+diff <(tar -tvf $file1.tar.gz | sort) <(tar -tvf $file2.tar.gz | sort)
+```
+
 #### Add sample test commit for testing with CI/CD build trigger jobs
 
 ```sh
