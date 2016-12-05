@@ -1,5 +1,31 @@
 ### Random Tips
 
+#### Format your USB drive on Linux base system
+
+WARNING: PLEASE TAKE CARE EXTRA CARE AS THIS COULD BE DESTRUCTIVE!
+
+```sh
+# 1) determine the driver for your usb
+sudo dmesg | tail
+
+# Or use lsblk which should give you the drive information
+sudo lsblk
+
+## 2) Umount your USB driver (from the first step)
+sudo umount /dev/sdb1
+
+## 3) Then reformat your USB to Fat32 (BE EXTRA CAREFUL HERE)
+sudo mkdosfs -n 'USB_LABEL' -F 32 -I /dev/sdb1
+
+## or if you just want FAT instead of Fat32 then omit the `-F 32`
+sudo mkdosfs -n 'USB_LABEL' -I /dev/sdb
+
+## 3) For EXT3
+sudo mkfs.ext3 -n 'LABEL' -I /dev/sdb
+```
+
+And that should be it
+
 #### Checkout the pull request commit from Github
 
 ```sh
