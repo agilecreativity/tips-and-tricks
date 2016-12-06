@@ -1,8 +1,35 @@
 ### Random Tips
 
+#### Default parameter in Linux shell script
+
+Sometime it is useful to be able to use sensible default for the user.
+e.g. In the following shell script we are trying to set the default `RAILS_ENV`
+to `develop` if the user omit to specify one.
+
+```bash
+#!/bin/bash
+## Script name: drop-create-migrate-seed-spec
+## Typical script in Ruby/Rails project to setup and quickly test the code
+RAILS_ENV=${RAILS_ENV:=development}
+echo "Using RAILS_ENV=$RAILS_ENV"
+RAILS_ENV=$RAILS_ENV bundle install
+RAILS_ENV=$RAILS_ENV bundle exec rake db:drop
+RAILS_ENV=$RAILS_ENV bundle exec rake db:create
+RAILS_ENV=$RAILS_ENV bundle exec rake db:migrate
+RAILS_ENV=$RAILS_ENV bundle exec rake db:seed
+RAILS_ENV=$RAILS_ENV bundle exec rake spec
+```
+
+Note if we like to run this script with different environment then we can do so
+using:
+
+```sh
+export RAILS_ENV=test && ./drop-create-migrate-seed-spec
+```
+
 #### Format your USB drive on Linux base system
 
-WARNING: PLEASE TAKE CARE EXTRA CARE AS THIS COULD BE DESTRUCTIVE!
+WARNING: PLEASE TAKE EXTRA CARE AS THIS COULD BE DESTRUCTIVE!
 
 ```sh
 # 1) determine the driver for your usb
