@@ -1,5 +1,47 @@
 ### Random Tips
 
+#### How to bring up your Github branch when your pull request (PR) is accepted.
+
+To bring your local/remote branch to the same level as the upstream branch you can do the
+following.
+
+I recentely contributed to [webica](https://github.com/tmarble/webica/commit/42895b7118fe403a7fdc538f3c0f7f73fc18a82c) and like my local branch to be the same level as
+the upstream version. All I have to do is the following:
+
+```sh
+# First you will need to tracking the branch if not already done
+git remote add upstream git@github.com:tmarble/webica.git
+```
+
+From the base directory of your current project you should be able to see something like
+
+```sh
+git remote -v
+origin	git@github.com:agilecreativity/webica.git (push)
+upstream	git@github.com:tmarble/webica.git (fetch)
+```
+
+Now you want to fetch the upstream change first
+
+```sh
+git fetch upstream master
+```
+
+Then to bring your local branch to the level of your upstream branch
+
+```sh
+git pull --rebase upstream master
+```
+
+At this point you should be able to push the change to your remote branch (origin)
+
+```sh
+# This is your own branch
+git push origin master
+```
+
+Your Github repository should now be at the same level as your upstream branch.
+
 #### Default parameter in Linux shell script
 
 Sometime it is useful to be able to use sensible default for the user.
