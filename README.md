@@ -1,5 +1,70 @@
 ### Random Tips
 
+#### Install Vim with Lua support on Mac OSX
+
+```sh
+brew instal vim  \
+--with-client-server \
+--with-gettext \
+--with-lua \
+--with-luajit \
+--with-override-system-vi \
+--HEAD
+```
+
+This will give you the `+lua` support which is more awesome!
+
+I am provision this through my Ansible playbook with this role (using Homebrew):
+
+```yml
+---
+## file: roles/common/tasks/editors.yml
+## ...
+##- name: Install Vim from source
+- name: Install latest version of Vim from source with Lua support
+  command: brew instal vim --with-client-server --with-gettext --with-lua --with-luajit --with-override-system-vi --HEAD
+  args:
+    creates: /usr/local/bin/vim
+  tags: editors
+## ...
+```
+
+If you things go well for you then you should see something like this when type `:version` from Vim
+
+```
+:version
+VIM - Vi IMproved 8.0 (2016 Sep 12, compiled May 18 2017 22:57:51)
+MacOS X (unix) version
+Included patches: 1-600
+Compiled by Homebrew
+Huge version without GUI.  Features included (+) or not (-):
++acl             +comments        +extra_search    +keymap          +mouse_dec       +path_extra      +smartindent     +title           +xfontset
++arabic          +conceal         +farsi           +lambda          -mouse_gpm       +perl            +startuptime     -toolbar         -xim
++autocmd         +cryptv          +file_in_path    +langmap         -mouse_jsbterm   +persistent_undo +statusline      +user_commands   -xpm
+-balloon_eval    +cscope          +find_in_path    +libcall         +mouse_netterm   +postscript      -sun_workshop    +vertsplit       +xsmp_interact
+-browse          +cursorbind      +float           +linebreak       +mouse_sgr       +printer         +syntax          +virtualedit     +xterm_clipboard
+++builtin_terms  +cursorshape     +folding         +lispindent      -mouse_sysmouse  +profile         +tag_binary      +visual          -xterm_save
++byte_offset     +dialog_con      -footer          +listcmds        +mouse_urxvt     +python          +tag_old_static  +visualextra
++channel         +diff            +fork()          +localmap        +mouse_xterm     -python3         -tag_any_white   +viminfo
++cindent         +digraphs        +gettext         +lua             +multi_byte      +quickfix        -tcl             +vreplace
++clientserver    -dnd             -hangul_input    +menu            +multi_lang      +reltime         +termguicolors   +wildignore
++clipboard       -ebcdic          +iconv           +mksession       -mzscheme        +rightleft       +terminfo        +wildmenu
++cmdline_compl   +emacs_tags      +insert_expand   +modify_fname    +netbeans_intg   +ruby            +termresponse    +windows
++cmdline_hist    +eval            +job             +mouse           +num64           +scrollbind      +textobjects     +writebackup
++cmdline_info    +ex_extra        +jumplist        -mouseshape      +packages        +signs           +timers          +X11
+   system vimrc file: "$VIM/vimrc"
+     user vimrc file: "$HOME/.vimrc"
+ 2nd user vimrc file: "~/.vim/vimrc"
+      user exrc file: "$HOME/.exrc"
+       defaults file: "$VIMRUNTIME/defaults.vim"
+  fall-back for $VIM: "/usr/local/share/vim"
+Compilation: clang -c -I. -Iproto -DHAVE_CONFIG_H   -DMACOS_X_UNIX  -g -O2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1
+Linking: clang   -L. -fstack-protector -L/usr/local/lib -L/usr/local/opt/libyaml/lib -L/usr/local/opt/openssl/lib -L/usr/local/opt/readline/lib  -L/usr/loca
+l/lib -o vim    -lXt -lX11 -lSM -lICE  -lncurses -liconv -lintl -framework Cocoa  -pagezero_size 10000 -image_base 100000000 -L/usr/local/lib -lluajit-5.1 -
+mmacosx-version-min=10.12 -fstack-protector-strong -L/usr/local/lib  -L/usr/local/Cellar/perl/5.24.1/lib/perl5/5.24.1/darwin-thread-multi-2level/CORE -lperl
+ -lm -lutil -lc -F/usr/local/opt/python/Frameworks -framework Python   -lruby.2.4.1 -lobjc
+```
+
 #### How to bring up your Github branch when your pull request (PR) is accepted.
 
 To bring your local/remote branch to the same level as the upstream branch you can do the
