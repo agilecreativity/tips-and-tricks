@@ -241,6 +241,64 @@ def exec_sh(script_name) {
   return result
 }
 ```
+#### Install PostgreSQL on Arch Linux
+
+- https://wiki.archlinux.org/index.php/PostgreSQL
+
+```
+sudo -u postgres -i
+```
+
+Then
+
+```
+[postgres]$ initdb --locale $LANG -E UTF8 -D '/var/lib/postgres/data'
+```
+
+Which should gives something like
+
+```
+$initdb --locale $LANG -E UTF8 -D '/var/lib/postgres/data'
+
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "en_US.UTF-8".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/postgres/data ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+
+Success. You can now start the database server using:
+
+    pg_ctl -D /var/lib/postgres/data -l logfile start
+```
+
+- You can then check if the database is start properly using
+
+```
+## restart the Postgres service
+sudo systemctl restart postgresql.service
+
+## Start the service at login
+sudo systemctl enable postgresql.service
+
+## Check if everything is running properly
+sudo systemctl status postgresql.service
+```
 
 #### Install postgreSQL on Fedora 24
 
