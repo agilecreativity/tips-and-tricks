@@ -1,5 +1,17 @@
 ### Random Tips
 
+#### Fix the Arch Linux keys not valid
+
+```sh
+# Try this command
+sudo pacman -S archlinux-keyring
+
+# Then
+sudo pacman -Syyu
+
+# Or as usual
+yaourt -Syyu
+```
 #### Install Vim with Lua support on Mac OSX
 
 ```sh
